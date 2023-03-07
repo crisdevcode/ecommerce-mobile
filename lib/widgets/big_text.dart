@@ -19,6 +19,7 @@ class BigText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      maxLines: 1,
       overflow: overflow,
       style: GoogleFonts.roboto(
         textStyle: TextStyle(
