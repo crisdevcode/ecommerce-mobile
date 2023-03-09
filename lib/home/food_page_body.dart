@@ -1,4 +1,5 @@
 import 'package:delivery_ecommerce/utils/colors.dart';
+import 'package:delivery_ecommerce/utils/dimensions.dart';
 import 'package:delivery_ecommerce/widgets/big_text.dart';
 import 'package:delivery_ecommerce/widgets/icon_and_text_widget.dart';
 import 'package:delivery_ecommerce/widgets/small_text.dart';
@@ -18,7 +19,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   var _currPageValue = 0.0;
   double _scaleFactor = 0.8;
-  double _height = 220;
+  double _height = Dimensions.pageViewContainer;
 
   @override
   void initState() {
@@ -40,7 +41,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     return Column(
       children: [
         Container(
-          height: 320,
+          height: Dimensions.pageView,
           child: PageView.builder(
             controller: pageController, // WHATS
             itemCount: 5,
@@ -92,10 +93,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       transform: matrix,
       child: Stack(children: [
         Container(
-          height: 220,
-          margin: const EdgeInsets.only(left: 10, right: 10),
+          height: Dimensions.pageViewContainer,
+          margin: EdgeInsets.only(left: Dimensions.width10, right:  Dimensions.width10),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(Dimensions.radius30),
               color: index.isEven
                   ? const Color(0xFF69c5df)
                   : const Color(0xFF9294cc),
@@ -108,10 +109,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: 120,
-            margin: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+            height: Dimensions.pageViewTextContainer, // WHATS
+            margin: EdgeInsets.only(left: Dimensions.width30, right: Dimensions.width30, bottom: Dimensions.height30),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20), 
+                borderRadius: BorderRadius.circular(Dimensions.radius20), 
                 color: Colors.white,
                 boxShadow: const [
                   BoxShadow(
@@ -130,12 +131,13 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 ]
                 ),
             child: Container(
-              padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+              padding: EdgeInsets.only(top: Dimensions.height15, left: 15, right: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   BigText(text: "Buona Pizza"),
-                  const SizedBox(height: 10),
+                  SizedBox(height: Dimensions.height10),
+                  // Comments section
                   Row(
                     children: [
                       Wrap(
@@ -152,7 +154,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                       SmallText(text: "Comentarios"),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: Dimensions.height20),
+                  // Time and distance section
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
