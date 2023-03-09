@@ -1,3 +1,4 @@
+import 'package:delivery_ecommerce/home/food_page_body.dart';
 import 'package:delivery_ecommerce/widgets/big_text.dart';
 import 'package:delivery_ecommerce/widgets/small_text.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +48,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ],
             ),
           ),
+          const FoodPageBody()
         ],
       )
     );
