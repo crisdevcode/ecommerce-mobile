@@ -1,4 +1,4 @@
-import 'package:delivery_ecommerce/home/food_page_body.dart';
+import 'package:delivery_ecommerce/pages/home/food_page_body.dart';
 import 'package:delivery_ecommerce/utils/dimensions.dart';
 import 'package:delivery_ecommerce/widgets/big_text.dart';
 import 'package:delivery_ecommerce/widgets/small_text.dart';
