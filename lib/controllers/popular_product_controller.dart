@@ -37,8 +37,10 @@ class PopularProductController extends GetxController {
   void setQuantity(bool isIncrement) {
     if (isIncrement) {
       _quantity = checkQuantity(_quantity + 1);
+      // print('[items count]: $_quantity');
     } else {
       _quantity = checkQuantity(_quantity - 1);
+      // print('[decrement]: $_quantity');
     }
 
     update(); // Refresh state
@@ -48,6 +50,12 @@ class PopularProductController extends GetxController {
     if ((_inCartItems + quantity) < 0) {
       Get.snackbar("Cantidad de productos", "¡No puedes reducir más!",
           backgroundColor: AppColors.mainColor, colorText: Colors.white);
+
+      if (_inCartItems > 0) {
+        _quantity = -inCartItems;
+        return _quantity;
+      }
+
       return 0;
     } else if ((_inCartItems + quantity) > 20) {
       Get.snackbar("Cantidad de productos", "¡No puedes agregar más!",
@@ -72,7 +80,6 @@ class PopularProductController extends GetxController {
   }
 
   void addItem(ProductModel product) {
-    
     _cart.addItem(product, _quantity);
 
     _quantity = 0;
