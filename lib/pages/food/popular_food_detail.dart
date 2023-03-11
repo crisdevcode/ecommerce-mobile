@@ -1,5 +1,6 @@
 import 'package:delivery_ecommerce/controllers/cart_controller.dart';
 import 'package:delivery_ecommerce/controllers/popular_product_controller.dart';
+import 'package:delivery_ecommerce/pages/cart/cart_page.dart';
 import 'package:delivery_ecommerce/pages/home/main_food_page.dart';
 import 'package:delivery_ecommerce/routes/route_helper.dart';
 import 'package:delivery_ecommerce/utils/app_constants.dart';
@@ -66,15 +67,20 @@ class PopularFoodDetail extends StatelessWidget {
                       children: [
                         const AppIcon(icon: Icons.shopping_cart_outlined),
                         Get.find<PopularProductController>().totalItems >= 1
-                            ? const Positioned(
+                            ? Positioned(
                                 // WHATS
                                 right: 0,
                                 top: 0,
-                                child: AppIcon(
-                                    icon: Icons.circle,
-                                    size: 20,
-                                    iconColor: Colors.transparent,
-                                    backgroundColor: AppColors.mainColor))
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => CartPage());
+                                  },
+                                  child: const AppIcon(
+                                      icon: Icons.circle,
+                                      size: 20,
+                                      iconColor: Colors.transparent,
+                                      backgroundColor: AppColors.mainColor),
+                                ))
                             : Container(),
                         Get.find<PopularProductController>().totalItems >= 1
                             ? Positioned(

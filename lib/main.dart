@@ -1,4 +1,5 @@
 import 'package:delivery_ecommerce/controllers/recommended_product_controller.dart';
+import 'package:delivery_ecommerce/pages/cart/cart_page.dart';
 import 'package:delivery_ecommerce/pages/home/main_food_page.dart';
 import 'package:delivery_ecommerce/routes/route_helper.dart';
 import 'package:flutter/material.dart';
@@ -24,11 +25,12 @@ class MyApp extends StatelessWidget {
     Get.find<RecommendedProductController>().getRecommendedProductList();
 
     return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        home: const MainFoodPage(),
-        // initialRoute: RouteHelper.initial,
-        getPages: RouteHelper.routes,
-        );
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      // home: const CartPage(),
+      home: const MainFoodPage(),
+      initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
+    );
   }
 }
