@@ -1,4 +1,5 @@
 import 'package:delivery_ecommerce/controllers/popular_product_controller.dart';
+import 'package:delivery_ecommerce/controllers/recommended_product_controller.dart';
 import 'package:delivery_ecommerce/models/product_model.dart';
 import 'package:delivery_ecommerce/utils/colors.dart';
 import 'package:delivery_ecommerce/utils/dimensions.dart';
@@ -60,8 +61,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     ),
                   )
                 : const CircularProgressIndicator(
-                  color: AppColors.mainColor,
-                );
+                    color: AppColors.mainColor,
+                  );
           },
         ),
         // Dots
@@ -100,83 +101,92 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           ),
         ),
         // Popular - list of food and images
-        ListView.builder(
-            // WHATS
-            physics: const NeverScrollableScrollPhysics(), // WHATS
-            shrinkWrap: true, // WHATS
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(
-                    left: Dimensions.width20,
-                    right: Dimensions.width20,
-                    bottom: Dimensions.height10),
-                child: Row(
-                  children: [
-                    // Image section
-                    Container(
-                      width: Dimensions.listViewImgSize,
-                      height: Dimensions.listViewImgSize,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.radius20),
-                          color: Colors.white38,
-                          image: const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  'https://images.unsplash.com/photo-1532550907401-a500c9a57435?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80'))),
-                    ),
-                    // Text Container
-                    Expanded(
-                      // WHATS
-                      child: Container(
-                        height: Dimensions.listViewTextContSize,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(Dimensions.radius20),
-                              bottomRight:
-                                  Radius.circular(Dimensions.radius20)),
-                          color: Colors.white,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              left: Dimensions.width10,
-                              right: Dimensions.width10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              BigText(text: "Pechuga a la plancha"),
-                              SizedBox(height: Dimensions.height10),
-                              SmallText(text: "Con papas + Gaseosa"),
-                              SizedBox(height: Dimensions.height10),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: const [
-                                  IconAndTextWidget(
-                                      icon: Icons.circle_sharp,
-                                      text: "Normal",
-                                      iconColor: AppColors.iconColor1),
-                                  IconAndTextWidget(
-                                      icon: Icons.location_on,
-                                      text: "1.7km",
-                                      iconColor: AppColors.mainColor),
-                                  IconAndTextWidget(
-                                      icon: Icons.access_time_rounded,
-                                      text: "32min",
-                                      iconColor: AppColors.iconColor2),
-                                ],
-                              )
-                            ],
+        GetBuilder<RecommendedProductController>(
+            builder: (recommenededProduct) {
+          return recommenededProduct.isLoaded
+              ? ListView.builder(
+                  // WHATS
+                  physics: const NeverScrollableScrollPhysics(), // WHATS
+                  shrinkWrap: true, // WHATS
+                  itemCount: recommenededProduct.recommendedProductList.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(
+                          left: Dimensions.width20,
+                          right: Dimensions.width20,
+                          bottom: Dimensions.height10),
+                      child: Row(
+                        children: [
+                          // Image section
+                          Container(
+                            width: Dimensions.listViewImgSize,
+                            height: Dimensions.listViewImgSize,
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.circular(Dimensions.radius20),
+                                color: Colors.white38,
+                                image: const DecorationImage(
+                                    fit: BoxFit.cover,
+                                    // TODO: Change image from API
+                                    image: NetworkImage(
+                                        'https://images.unsplash.com/photo-1532550907401-a500c9a57435?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80'))),
                           ),
-                        ),
+                          // Text Container
+                          Expanded(
+                            // WHATS
+                            child: Container(
+                              height: Dimensions.listViewTextContSize,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topRight:
+                                        Radius.circular(Dimensions.radius20),
+                                    bottomRight:
+                                        Radius.circular(Dimensions.radius20)),
+                                color: Colors.white,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: Dimensions.width10,
+                                    right: Dimensions.width10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    BigText(text: recommenededProduct.recommendedProductList[index].name),
+                                    SizedBox(height: Dimensions.height10),
+                                    SmallText(text: "Con papas + Gaseosa"),
+                                    SizedBox(height: Dimensions.height10),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        IconAndTextWidget(
+                                            icon: Icons.circle_sharp,
+                                            text: "Normal",
+                                            iconColor: AppColors.iconColor1),
+                                        IconAndTextWidget(
+                                            icon: Icons.location_on,
+                                            text: "1.7km",
+                                            iconColor: AppColors.mainColor),
+                                        IconAndTextWidget(
+                                            icon: Icons.access_time_rounded,
+                                            text: "32min",
+                                            iconColor: AppColors.iconColor2),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    )
-                  ],
-                ),
+                    );
+                  })
+              : const CircularProgressIndicator(
+                color: AppColors.mainColor,
               );
-            }),
+        })
       ],
     );
   }
