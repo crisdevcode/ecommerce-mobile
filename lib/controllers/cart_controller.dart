@@ -28,7 +28,8 @@ class CartController extends GetxController {
             img: value.img,
             quantity: value.quantity! + quantity,
             isExist: true,
-            time: DateTime.now().toString());
+            time: DateTime.now().toString(),
+            product: product);
       });
 
       if (totalQuantity <= 0) {
@@ -45,7 +46,8 @@ class CartController extends GetxController {
               img: product.img,
               quantity: quantity,
               isExist: true,
-              time: DateTime.now().toString());
+              time: DateTime.now().toString(),
+              product: product);
         }); // WHATS
       } else {
         Get.snackbar("Cantidad de productos",
@@ -53,6 +55,8 @@ class CartController extends GetxController {
             backgroundColor: AppColors.mainColor, colorText: Colors.white);
       }
     }
+
+    update();
   }
 
   bool existIncart(ProductModel product) {
