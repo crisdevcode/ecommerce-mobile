@@ -27,10 +27,14 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      // home: const CartPage(),
-      home: const MainFoodPage(),
-      initialRoute: RouteHelper.initial,
+      initialRoute: RouteHelper.getInitial(),
       getPages: RouteHelper.routes,
     );
   }
 }
+
+/**
+ * Notes:
+ * // home: const MainFoodPage(),
+ * 
+ */
