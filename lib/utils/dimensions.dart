@@ -44,4 +44,7 @@ class Dimensions {
 
   // Dynamic popular food
   static double bottomHeightBar = screenHeight / 7.03;
+
+  // Slash screen dimensions
+  static double splashImg = screenHeight / 3.38;
 }
