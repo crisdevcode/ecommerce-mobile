@@ -41,6 +41,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   @override
   void dispose() {
     pageController.dispose(); // WHATS
+    super.dispose();
   }
 
   @override
@@ -115,7 +116,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        Get.toNamed(RouteHelper.getRecommendedFood(index, "home"));
+                        Get.toNamed(
+                            RouteHelper.getRecommendedFood(index, "home"));
                       },
                       child: Container(
                         margin: EdgeInsets.only(
@@ -135,7 +137,11 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                   image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: NetworkImage(
-                                          AppConstants.BASE_URL+AppConstants.UPLOAD_URL+recommenededProduct.recommendedProductList[index].img))),
+                                          AppConstants.BASE_URL +
+                                              AppConstants.UPLOAD_URL +
+                                              recommenededProduct
+                                                  .recommendedProductList[index]
+                                                  .img))),
                             ),
                             // Text Container
                             Expanded(
@@ -246,9 +252,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     : const Color(0xFF9294cc),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(
-                    
-                      AppConstants.BASE_URL+AppConstants.UPLOAD_URL+popularProduct.img),
+                  image: NetworkImage(AppConstants.BASE_URL +
+                      AppConstants.UPLOAD_URL +
+                      popularProduct.img),
                 )),
           ),
         ),
