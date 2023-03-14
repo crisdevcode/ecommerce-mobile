@@ -7,18 +7,25 @@ import 'package:delivery_ecommerce/data/repository/recommended_product_repo.dart
 import 'package:delivery_ecommerce/utils/app_constants.dart';
 import 'package:get/get.dart';
 import 'package:delivery_ecommerce/data/api/api_client.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> init() async {
+  final sharedPreferences = await SharedPreferences.getInstance();
+
+  Get.lazyPut(() => sharedPreferences);
+
   // Api client
-  Get.lazyPut(() => ApiClient(appBaseUrl: AppConstants.BASE_URL)); // No slash at the end.
+  Get.lazyPut(() =>
+      ApiClient(appBaseUrl: AppConstants.BASE_URL)); // No slash at the end.
 
   // Repos
   Get.lazyPut(() => PopularProductRepo(apiClient: Get.find())); // WHATS
   Get.lazyPut(() => RecommendedProductRepo(apiClient: Get.find()));
-  Get.lazyPut(() => CartRepo());
+  Get.lazyPut(() => CartRepo(sharedPreferences: Get.find()));
 
   // Controllers
   Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find()));
-  Get.lazyPut(() => RecommendedProductController(recommendedProductRepo: Get.find()));
+  Get.lazyPut(
+      () => RecommendedProductController(recommendedProductRepo: Get.find()));
   Get.lazyPut(() => CartController(cartRepo: Get.find()));
 }

@@ -1,3 +1,4 @@
+import 'package:delivery_ecommerce/pages/cart/cart_history.dart';
 import 'package:delivery_ecommerce/pages/home/main_food_page.dart';
 import 'package:delivery_ecommerce/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +14,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  List pages = [
+  List pages = const [
     MainFoodPage(),
     Text('next page 2'),
-    Text('next page 3'),
+    CartHistory(),
     Text('next page 4'),
   ];
 
