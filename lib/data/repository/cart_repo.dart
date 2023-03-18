@@ -50,7 +50,8 @@ class CartRepo {
   List<CartModel> getCartHistoryList() {
     if (sharedPreferences.containsKey(AppConstants.CART_HISTORY_LIST)) {
       // cartHistory = [];
-      cartHistory = sharedPreferences.getStringList(AppConstants.CART_HISTORY_LIST)!;
+      cartHistory =
+          sharedPreferences.getStringList(AppConstants.CART_HISTORY_LIST)!;
     }
     List<CartModel> cartListHistory = [];
 
@@ -77,14 +78,19 @@ class CartRepo {
         AppConstants.CART_HISTORY_LIST, cartHistory);
     print('[Lenght of history list]: ${getCartHistoryList().length}');
 
-    for(int i = 0; i < getCartHistoryList().length; i++) {
+    for (int i = 0; i < getCartHistoryList().length; i++) {
       print('[Time for the order]: ${getCartHistoryList()[i].time}');
     }
-
   }
 
   void removeCart() {
     cart = [];
     sharedPreferences.remove(AppConstants.CART_LIST);
+  }
+
+  void clearCartHistory() {
+    removeCart();
+    cartHistory = [];
+    sharedPreferences.remove(AppConstants.CART_HISTORY_LIST);
   }
 }

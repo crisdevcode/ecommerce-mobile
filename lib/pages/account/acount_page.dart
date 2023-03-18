@@ -1,9 +1,13 @@
+import 'package:delivery_ecommerce/controllers/auth_controller.dart';
+import 'package:delivery_ecommerce/controllers/cart_controller.dart';
+import 'package:delivery_ecommerce/routes/route_helper.dart';
 import 'package:delivery_ecommerce/utils/colors.dart';
 import 'package:delivery_ecommerce/utils/dimensions.dart';
 import 'package:delivery_ecommerce/widgets/account_widget.dart';
 import 'package:delivery_ecommerce/widgets/app_icon.dart';
 import 'package:delivery_ecommerce/widgets/big_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -92,7 +96,30 @@ class AccountPage extends StatelessWidget {
                           iconSize: Dimensions.height10 * 5 / 2,
                           size: Dimensions.height10 * 5,
                         ),
-                        bigText: BigText(text: "Cristian"),
+                        bigText: BigText(text: "Mensajes"),
+                      ),
+                      SizedBox(height: Dimensions.height20),
+                      GestureDetector(
+                        onTap: () {
+                          if (Get.find<AuthController>().userLoggedIn()) {
+                            Get.find<AuthController>().clearSharedData();
+                            Get.find<CartController>().clear();
+                            Get.find<CartController>().clearCartHistory();
+                            Get.offNamed(RouteHelper.getSignInPage());
+                          } else {
+                            print('estás desconectado');
+                          }
+                        },
+                        child: AccountWidget(
+                          appIcon: AppIcon(
+                            icon: Icons.logout,
+                            backgroundColor: Colors.red,
+                            iconColor: Colors.white,
+                            iconSize: Dimensions.height10 * 5 / 2,
+                            size: Dimensions.height10 * 5,
+                          ),
+                          bigText: BigText(text: "Cerrar sesión"),
+                        ),
                       ),
                       SizedBox(height: Dimensions.height20),
                     ],
