@@ -1,4 +1,5 @@
 // Flutter and etX
+import 'package:delivery_ecommerce/pages/auth/sign_in_page.dart';
 import 'package:delivery_ecommerce/pages/auth/sign_up_page.dart';
 import 'package:delivery_ecommerce/pages/splash/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          home: SignUpPage(),
+          home: SignInPage(),
           // initialRoute: RouteHelper.getSplashPage(),
           // getPages: RouteHelper.routes,
         );

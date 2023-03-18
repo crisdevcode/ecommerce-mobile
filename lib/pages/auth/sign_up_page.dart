@@ -86,7 +86,7 @@ class SignUpPage extends StatelessWidget {
               // WHATS
               text: TextSpan(
                   recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
-                  text: "¿Ya tienes una cuenta?",
+                  text: "Ya tengo una cuenta",
                   style: TextStyle(
                       color: Colors.grey[500], fontSize: Dimensions.font20)),
             ),
