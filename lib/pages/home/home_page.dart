@@ -1,3 +1,4 @@
+import 'package:delivery_ecommerce/pages/account/acount_page.dart';
 import 'package:delivery_ecommerce/pages/cart/cart_history.dart';
 import 'package:delivery_ecommerce/pages/home/main_food_page.dart';
 import 'package:delivery_ecommerce/utils/colors.dart';
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
     MainFoodPage(),
     Text('next page 2'),
     CartHistory(),
-    Text('next page 4'),
+    AccountPage()
   ];
 
   void onTabNav(int index) {
