@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
+
 import 'package:delivery_ecommerce/pages/account/acount_page.dart';
-import 'package:delivery_ecommerce/pages/auth/sign_up_page.dart';
+import 'package:delivery_ecommerce/pages/auth/sign_in_page.dart';
 import 'package:delivery_ecommerce/pages/cart/cart_history.dart';
 import 'package:delivery_ecommerce/pages/home/main_food_page.dart';
 import 'package:delivery_ecommerce/utils/colors.dart';
-import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   // WHATS
@@ -16,9 +17,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  List pages = const [
+  List pages = const  [
     MainFoodPage(),
-    SignUpPage(),
+    Text('History page'),
     CartHistory(),
     AccountPage()
   ];
