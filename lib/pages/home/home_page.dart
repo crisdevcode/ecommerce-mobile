@@ -1,4 +1,5 @@
 import 'package:delivery_ecommerce/pages/account/acount_page.dart';
+import 'package:delivery_ecommerce/pages/auth/sign_up_page.dart';
 import 'package:delivery_ecommerce/pages/cart/cart_history.dart';
 import 'package:delivery_ecommerce/pages/home/main_food_page.dart';
 import 'package:delivery_ecommerce/utils/colors.dart';
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   List pages = const [
     MainFoodPage(),
-    Text('next page 2'),
+    SignUpPage(),
     CartHistory(),
     AccountPage()
   ];

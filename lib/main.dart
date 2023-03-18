@@ -1,4 +1,6 @@
 // Flutter and etX
+import 'package:delivery_ecommerce/pages/auth/sign_up_page.dart';
+import 'package:delivery_ecommerce/pages/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // Amplify Dependencies
@@ -32,9 +34,9 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          //home: const SplashPage(),
-          initialRoute: RouteHelper.getSplashPage(),
-          getPages: RouteHelper.routes,
+          home: SignUpPage(),
+          // initialRoute: RouteHelper.getSplashPage(),
+          // getPages: RouteHelper.routes,
         );
       });
     });
