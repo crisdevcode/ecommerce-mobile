@@ -1,13 +1,17 @@
-import 'package:delivery_ecommerce/controllers/cart_controller.dart';
-import 'package:delivery_ecommerce/controllers/recommended_product_controller.dart';
-import 'package:delivery_ecommerce/pages/cart/cart_page.dart';
-import 'package:delivery_ecommerce/pages/home/main_food_page.dart';
-import 'package:delivery_ecommerce/pages/splash/splash_page.dart';
-import 'package:delivery_ecommerce/routes/route_helper.dart';
+// Flutter and etX
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'helper/dependencies.dart' as dep;
+// Amplify Dependencies
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:amplify_datastore/amplify_datastore.dart';
+// Controllers
+import 'package:delivery_ecommerce/controllers/cart_controller.dart';
+import 'package:delivery_ecommerce/controllers/recommended_product_controller.dart';
 import 'package:delivery_ecommerce/controllers/popular_product_controller.dart';
+// Routes
+import 'package:delivery_ecommerce/routes/route_helper.dart';
+// Helpers
+import 'helper/dependencies.dart' as dep;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // WHATS
@@ -36,9 +40,3 @@ class MyApp extends StatelessWidget {
     });
   }
 }
-
-/**
- * Notes:
- * // home: const MainFoodPage(),
- * 
- */
