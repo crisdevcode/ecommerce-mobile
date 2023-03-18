@@ -1,15 +1,15 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:delivery_ecommerce/controllers/auth_controller.dart';
 import 'package:delivery_ecommerce/controllers/cart_controller.dart';
 import 'package:delivery_ecommerce/controllers/popular_product_controller.dart';
 import 'package:delivery_ecommerce/controllers/recommended_product_controller.dart';
-import 'package:delivery_ecommerce/pages/home/main_food_page.dart';
 import 'package:delivery_ecommerce/routes/route_helper.dart';
 import 'package:delivery_ecommerce/utils/colors.dart';
 import 'package:delivery_ecommerce/utils/dimensions.dart';
 import 'package:delivery_ecommerce/widgets/app_icon.dart';
 import 'package:delivery_ecommerce/widgets/big_text.dart';
 import 'package:delivery_ecommerce/widgets/small_text.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -90,14 +90,16 @@ class CartPage extends StatelessWidget {
                                           .recommendedProductList
                                           .indexOf(_cartList[index].product);
 
-                                      if(recommendedIndex < 0) {
-                                        Get.snackbar(
-                                        "Historial de productos",
-                                        "La descripción del producto no está disponible para los productos del historial.",
-                                        backgroundColor: AppColors.mainColor, 
-                                        colorText: Colors.white);
+                                      if (recommendedIndex < 0) {
+                                        Get.snackbar("Historial de productos",
+                                            "La descripción del producto no está disponible para los productos del historial.",
+                                            backgroundColor:
+                                                AppColors.mainColor,
+                                            colorText: Colors.white);
                                       } else {
-                                        Get.toNamed(RouteHelper.getRecommendedFood(recommendedIndex, "cartpage"));
+                                        Get.toNamed(
+                                            RouteHelper.getRecommendedFood(
+                                                recommendedIndex, "cartpage"));
                                       }
                                     }
                                   },
@@ -244,8 +246,11 @@ class CartPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // popularProduct.addItem(product);
-                    cartController.addToHistory();
+                    if (Get.find<AuthController>().userLoggedIn()) {
+                      cartController.addToHistory();
+                    } else {
+                      Get.toNamed(RouteHelper.getSignInPage());
+                    }
                   },
                   child: Container(
                     padding: EdgeInsets.only(
