@@ -2,6 +2,7 @@ import 'package:delivery_ecommerce/base/custom_loader.dart';
 import 'package:delivery_ecommerce/base/show_custom_snack_bar.dart';
 import 'package:delivery_ecommerce/controllers/auth_controller.dart';
 import 'package:delivery_ecommerce/models/sign_up_body_model.dart';
+import 'package:delivery_ecommerce/routes/route_helper.dart';
 import 'package:delivery_ecommerce/utils/colors.dart';
 import 'package:delivery_ecommerce/utils/dimensions.dart';
 import 'package:delivery_ecommerce/widgets/app_text_field.dart';
@@ -70,7 +71,8 @@ class SignUpPage extends StatelessWidget {
         // Send data to API
         authController.registration(signUpBody).then((status) {
           if (status.isSuccess) {
-            print("Success registration");
+            // print('Success registration');
+            Get.offNamed(RouteHelper.getInitial());
           } else {
             showCustomSnackBar(status.message);
           }

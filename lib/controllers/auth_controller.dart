@@ -46,7 +46,7 @@ class AuthController extends GetxController implements GetxService {
       // print('[Backend Token]');
       // Save token of user in headers and sharedpreferences
       authRepo.saveUserToken(response.body["token"]);
-      // print('${response.body["token"]}');
+      // print('My token is: ${response.body["token"]}'); //! ONLY FOR TESTING
       responseModel = ResponseModel(true, response.body["token"]);
     } else {
       responseModel = ResponseModel(false, response.statusText!);
