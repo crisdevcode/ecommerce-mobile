@@ -1,12 +1,7 @@
 // Flutter and etX
-import 'package:delivery_ecommerce/pages/auth/sign_in_page.dart';
-import 'package:delivery_ecommerce/pages/auth/sign_up_page.dart';
-import 'package:delivery_ecommerce/pages/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// Amplify Dependencies
-import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:amplify_datastore/amplify_datastore.dart';
+import 'package:delivery_ecommerce/utils/colors.dart';
 // Controllers
 import 'package:delivery_ecommerce/controllers/cart_controller.dart';
 import 'package:delivery_ecommerce/controllers/recommended_product_controller.dart';
@@ -40,6 +35,10 @@ class MyApp extends StatelessWidget {
           // home: SignInPage(), // Testing Page
           initialRoute: RouteHelper.getSplashPage(),
           getPages: RouteHelper.routes,
+          theme: ThemeData(
+            primaryColor:  AppColors.mainColor,
+            fontFamily: 'Lato', //* Change this if this not works.
+          )
         );
       });
     });
